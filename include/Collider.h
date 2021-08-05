@@ -1,16 +1,24 @@
 #ifndef COLLIDER_H
 #define COLLIDER_H
+#include<SFML/Graphics.hpp>
 
 
 class Collider
 {
-    public:
-        Collider();
-        virtual ~Collider();
+   public:
+	Collider(sf::RectangleShape* body);
 
-    protected:
+	~Collider();
 
-    private:
+	bool checkCollision(const Collider & other);
+
+
+	//Getters
+	sf::Vector2f getHalfSize() const;
+	sf::Vector2f getPos() const;
+
+private:
+	sf::RectangleShape* body;
 };
 
 #endif // COLLIDER_H

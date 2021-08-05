@@ -1,16 +1,42 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
+#include <SFML/Graphics.hpp>
+#include "Entity.h" 
+#include <string>
 
-class Button
+enum ButtonState{IDLE = 0, HOVER, PRESSED};
+
+
+class Button : public Entity
 {
-    public:
-        Button();
-        virtual ~Button();
+public:
+    Button(sf::Vector2f position, sf::Texture * texture, sf::Vector2f size,
+		sf::Color idleColor, sf::Color hoverColor, sf::Color pressedColor,sf::Font * font,
+		std::string value, int textSize, sf::Color textColor);
+    ~Button();
 
-    protected:
+    void update(double deltaT) override;
+	void draw(sf::RenderWindow * w) override;
 
-    private:
+    void checkState(sf::Vector2f mousePos);
+    bool isPressed();
+
+    
+	void setTextPos(sf::Vector2f newPos);
+	void setText(std::string newText); 
+
+	
+	std::string getText() const; 
+
+private:
+    sf::Text text; 
+	ButtonState state;
+
+	sf::Color idleColor; 
+	sf::Color hoverColor;
+	sf::Color pressedColor;
+
 };
 
 #endif // BUTTON_H

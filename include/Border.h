@@ -1,16 +1,18 @@
 #ifndef BORDER_
 #define BORDER_
 
+#include "Entity.h"
 
-class Border
+
+
+class Border : public Entity
 {
-    public:
-        Border();
-        virtual ~Border();
+public:
+    Border();
+    ~Border();
 
-    protected:
+    void update(double deltaT) override;
 
-    private:
 };
 
 #endif // BORDER_

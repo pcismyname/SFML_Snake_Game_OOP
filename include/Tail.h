@@ -2,15 +2,17 @@
 #define TAIL_H
 
 
-class Tail
+#include <SFML/Graphics.hpp>
+#include "Entity.h"
+
+class Tail : public Entity
 {
-    public:
-        Tail();
-        virtual ~Tail();
+public:
+	Tail(sf::Vector2f position, sf::Texture * texture);
 
-    protected:
-
-    private:
+	void update(double deltaT) override;
+	~Tail();
 };
 
-#endif // TAIL_H
+
+#endif //TAIL_H

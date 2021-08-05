@@ -25,7 +25,7 @@ class Game
         void draw();
         void processStuff();
         void run();
-        void initState();
+        void initStates();
     
     private:
 

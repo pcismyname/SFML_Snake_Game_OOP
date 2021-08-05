@@ -1,16 +1,25 @@
+
 #ifndef FRUIT_H
 #define FRUIT_H
 
+#include <SFML/Graphics.hpp>
+#include "Entity.h"
+#include <ctime>
+#include <cstdlib> 
 
-class Fruit
+class Fruit : public Entity
 {
-    public:
-        Fruit();
-        virtual ~Fruit();
+public:
+	Fruit(sf::Vector2f position, sf::Texture * texture);
+	~Fruit();
 
-    protected:
+	void update(double deltaT) override;
 
-    private:
+	void setCollide(bool newCollide);
+
+private:
+	bool collide; 
 };
 
-#endif // FRUIT_H
+
+#endif
