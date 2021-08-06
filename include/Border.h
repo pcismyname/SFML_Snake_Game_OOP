@@ -8,7 +8,7 @@
 class Border : public Entity
 {
 public:
-    Border();
+    Border(sf::Vector2f position, sf::Texture * texture);
     ~Border();
 
     void update(double deltaT) override;

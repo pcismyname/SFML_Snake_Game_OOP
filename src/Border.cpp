@@ -1,11 +1,14 @@
 #include "Border.h"
 
-Border::Border()
+Border::Border(sf::Vector2f position,sf::Texture * texture) : Entity(position,texture)
 {
-    //ctor
 }
 
 Border::~Border()
 {
-    //dtor
+}
+
+void Border::update(double deltaT)
+{
+
 }

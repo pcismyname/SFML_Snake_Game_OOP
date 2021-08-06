@@ -157,7 +157,7 @@ void GameState::updateKeyBinds(double deltaT)
 
 void GameState::initBorder()
 {
-	this->borderTexture.loadFromFile("Sprites/wall.png");
+	this->borderTexture.loadFromFile("pic/wall.png");
 
 	int amountNeeded = 83;
 
