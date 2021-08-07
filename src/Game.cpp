@@ -5,8 +5,8 @@
 
 Game::Game() : window(sf::VideoMode(800, 800), "SnakeGame", sf::Style::Close)
 {
-    this->deltaT = 0; 
-    this->initStates(); 
+    this->deltaT = 0;
+    this->initStates();
     this->score =0;
 
 
@@ -87,7 +87,7 @@ void Game::processStuff()
 
 
     }
-    
+
     //Lost State
     if(this->states.size() <= 1)
     {

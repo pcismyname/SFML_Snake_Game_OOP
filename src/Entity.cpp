@@ -7,6 +7,7 @@ Entity::Entity(sf::Vector2f position, sf::Texture *texture)
     this->body.setSize(sf::Vector2f(40, 40));
 
     this->body.setOrigin(this->body.getSize().x/2.0f,this->body.getSize().y / 2.0f);
+    this->body.setPosition(position);
     this->body.setTexture(texture);
 }
 
@@ -21,6 +22,7 @@ void Entity::draw(sf::RenderWindow *w)
     w->draw(this->body);
 }
 
+//Getters
 sf::Vector2f Entity::getPos()
 {
     return this->body.getPosition();

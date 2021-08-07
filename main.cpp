@@ -1,9 +1,11 @@
 #include <iostream>
-
-using namespace std;
+#include "Game.h"
 
 int main()
 {
-    cout << "Hello world!" << endl;
-    return 0;
+	Game snakeGame;
+
+	snakeGame.start();
+
+	return 0;
 }

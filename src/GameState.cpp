@@ -125,17 +125,17 @@ void GameState::processStuff(double deltaT, sf::Vector2f mousePos)
         }
     }
 
-    counterHF += deltaT; 
-	counterHT += deltaT; 
-	counterHB += deltaT; 
+    counterHF += deltaT;
+	counterHT += deltaT;
+	counterHB += deltaT;
 
 }
 
 void GameState::updateKeyBinds(double deltaT)
 {
-	State::checkForQuit(); 
+	State::checkForQuit();
 
-	
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 	{
 		if (pauseCounter >= 0.3)
@@ -146,12 +146,12 @@ void GameState::updateKeyBinds(double deltaT)
 			}
 			else
 			{
-				this->pause = false; 
+				this->pause = false;
 			}
 			std::cout << "Pausing Screen " << this->pause<<  std::endl;
-			pauseCounter = 0; 
+			pauseCounter = 0;
 	    }
-	pauseCounter += deltaT; 
+	pauseCounter += deltaT;
     }
 }
 
@@ -159,14 +159,14 @@ void GameState::initBorder()
 {
 	this->borderTexture.loadFromFile("pic/wall.png");
 
-	int amountNeeded = 83;//Need 76 Borders to Cover the 800x800 Window Sizes Each Border 40x40 
+	int amountNeeded = 83;//Need 76 Borders to Cover the 800x800 Window Sizes Each Border 40x40
 	/*
 		20 needed
-		_____ 
+		_____
 	18  |    | 18
 		|    |
 		------
-		20 needed 
+		20 needed
 	*/
 
 	//Position for the Borders
@@ -178,10 +178,10 @@ void GameState::initBorder()
 	{
 		this->borders.push_back(new Border(pos, &this->borderTexture));
 
-		if (i < 20) //Updating the Position for the Long lines 
+		if (i < 20) //Updating the Position for the Long lines
 		{
 			pos.x += 40;
-			pos.y = 0; 
+			pos.y = 0;
 		}
 		else if (i < 60 && i >= 20) //Updating the Position for the border Lines  |     |
 		{
@@ -192,7 +192,7 @@ void GameState::initBorder()
 			}
 			else
 			{
-				//i is odd 
+				//i is odd
 				pos.x = 800;
 			}
 			if (flag == 2)
@@ -201,7 +201,7 @@ void GameState::initBorder()
 				pos.y += 40;
 				flag = 0; //Resetting Flag
 			}
-			flag++; //Updating Flag 
+			flag++; //Updating Flag
 		}
 		else if (i >= 60)//Updating the Position for the Long lines LAST ONE
 		{
