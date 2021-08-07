@@ -23,7 +23,7 @@ public:
 
     void growTail();
 
-    void updateTail();
+    void updateTails();
 
     bool headToTail();
 

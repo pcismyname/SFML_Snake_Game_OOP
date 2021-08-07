@@ -88,7 +88,7 @@ void GameState::draw(sf::RenderWindow *w)
 
 void GameState::processStuff(double deltaT, sf::Vector2f mousePos)
 {
-    if (this->head->getCollider().checkCollision(this->fruit->getCollider() == true))
+    if (this->head->getCollider().checkCollision(this->fruit->getCollider()) == true)
     {
         if (counterHF >= 0.3)
         {
@@ -150,52 +150,64 @@ void GameState::updateKeyBinds(double deltaT)
 			}
 			std::cout << "Pausing Screen " << this->pause<<  std::endl;
 			pauseCounter = 0; 
-	}
+	    }
 	pauseCounter += deltaT; 
+    }
 }
-
 
 void GameState::initBorder()
 {
 	this->borderTexture.loadFromFile("pic/wall.png");
 
-	int amountNeeded = 83;
+	int amountNeeded = 83;//Need 76 Borders to Cover the 800x800 Window Sizes Each Border 40x40 
+	/*
+		20 needed
+		_____ 
+	18  |    | 18
+		|    |
+		------
+		20 needed 
+	*/
 
+	//Position for the Borders
 	sf::Vector2f pos(0, 0);
 
-	int flag = 0;
+	int flag = 0;//Helps update the position
 
 	for (int i = 0; i < amountNeeded; i++)
 	{
 		this->borders.push_back(new Border(pos, &this->borderTexture));
 
-		if (i < 20) 
+		if (i < 20) //Updating the Position for the Long lines 
 		{
 			pos.x += 40;
 			pos.y = 0; 
 		}
-		else if (i < 60 && i >= 20) 
+		else if (i < 60 && i >= 20) //Updating the Position for the border Lines  |     |
 		{
 			if (i % 2 == 0)
 			{
+				//i is even
 				pos.x = 0;
 			}
 			else
 			{
+				//i is odd 
 				pos.x = 800;
 			}
 			if (flag == 2)
 			{
+				//Update the y POSITION
 				pos.y += 40;
-				flag = 0; 
+				flag = 0; //Resetting Flag
 			}
-			flag++; 
+			flag++; //Updating Flag 
 		}
-		else if (i >= 60)
+		else if (i >= 60)//Updating the Position for the Long lines LAST ONE
 		{
 			if (i == 60)
 			{
-				pos.x = 0;
+				pos.x = 0;//Reset the Starting Position
 				pos.y = 800;
 			}
 			else

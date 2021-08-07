@@ -1,11 +1,14 @@
 #include "Tail.h"
 
-Tail::Tail()
+Tail::Tail(sf::Vector2f position, sf::Texture * texture) : Entity(position,texture)
 {
-    //ctor
 }
 
 Tail::~Tail()
 {
-    //dtor
+}
+
+void Tail::update(double deltaT)
+{
+	
 }
