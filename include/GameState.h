@@ -7,9 +7,10 @@
 #include "Entity.h"
 #include "Fruit.h"
 #include "Head.h"
-#include "Border.h" 
+#include "Border.h"
 #include <vector>
 #include "Button.h"
+#include <Obstacle.h>
 
 class GameState : public State
 {
@@ -25,37 +26,45 @@ class GameState : public State
     void initBorder();
 
 private:
-    
+
     Head *head;
     sf::Texture headTexture;
 
     Fruit * fruit;
     sf::Texture fruitTexture;
 
+    Obstacle *obs1;
+    Obstacle *obs2;
+    sf::Texture obsTexture;
+
     std::vector<Border *> borders;
     sf::Texture borderTexture;
 
     double counterHF;
-	
+
 	double counterHT;
-	
+
 	double counterHB;
+
+	double counterHO1;
+    double counterHO2;
+
 
 	double pauseCounter;
 
     sf::RectangleShape background;
 
-    
-	bool pause; 
 
-	sf::Text pauseText; 
+	bool pause;
+
+	sf::Text pauseText;
 	sf::Font font;
 
 	sf::Texture scoreTexture;
 	Button* scoreButton;
 
 
-   
+
 };
 
 #endif // GAMESTATE_H

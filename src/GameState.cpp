@@ -5,8 +5,15 @@ GameState::GameState()
 {
     this->headTexture.loadFromFile("pic\\head.png");
     this->fruitTexture.loadFromFile("pic\\fruit.png");
+    this->obsTexture.loadFromFile("pic\\wall.png");
 
-    this->head = new Head(sf::Vector2f(400, 400), &headTexture);
+    this->head = new Head(sf::Vector2f(100, 100), &headTexture);
+    this->obs1 = new Obstacle(sf::Vector2f(350, 350), &obsTexture);
+    this->obs2 = new Obstacle(sf::Vector2f(550, 350), &obsTexture);
+
+
+
+
 
     srand(time(0));
     int randNum = rand() % 740 + 40;
@@ -18,6 +25,8 @@ GameState::GameState()
     this->counterHF = 0;
     this->counterHT = 0;
     this->counterHB = 0;
+    this->counterHO1 = 0;
+    this->counterHO2 = 0;
     this->pauseCounter = 0;
 
     this->background.setPosition(sf::Vector2f(0, 0));
@@ -42,8 +51,12 @@ GameState::~GameState()
 {
     std::cout << "Delete Head " << std::endl;
     std::cout << "Deleting Fruit" << std::endl;
+    std::cout << "Deleting Obstacle" << std::endl;
     delete this->head;
     delete this->fruit;
+    delete this->obs1;
+    delete this->obs2;
+
 
     for (int i = 0; i < this->borders.size(); i++)
     {
@@ -61,6 +74,8 @@ void GameState::update(double deltaT)
     {
         this->head->update(deltaT);
         this->fruit->update(deltaT);
+        this->obs1->update(deltaT);
+        this->obs2->update(deltaT);
     }
 }
 
@@ -71,6 +86,9 @@ void GameState::draw(sf::RenderWindow *w)
 
     this->head->draw(w);
     this->fruit->draw(w);
+    this->obs1->draw(w);
+    this->obs2->draw(w);
+
 
     //Drawing the border
     for (int i = 0; i < this->borders.size(); i++)
@@ -125,9 +143,20 @@ void GameState::processStuff(double deltaT, sf::Vector2f mousePos)
         }
     }
 
+    if(this->head->getCollider().checkCollision(this->obs1->getCollider()) == true ||
+       this->head->getCollider().checkCollision(this->obs2->getCollider()) == true)
+    {
+        std::cout << "Head Touched Wall" << std::endl;
+            counterHO1 = 0;
+            counterHO2 = 0;
+            State::setQuit(true);
+    }
+
     counterHF += deltaT;
 	counterHT += deltaT;
 	counterHB += deltaT;
+	counterHO1 += deltaT;
+	counterHO2 += deltaT;
 
 }
 
